@@ -36,12 +36,12 @@ import java.nio.ByteBuffer;
  */
 public interface TorrentByteStorage {
 
-	public static final String PARTIAL_FILE_NAME_SUFFIX = ".part";
+	String PARTIAL_FILE_NAME_SUFFIX = ".part";
 
 	/**
 	 * Returns the total size of the torrent storage.
 	 */
-	public long size();
+	long size();
 
 	/**
 	 * Read from the byte storage.
@@ -59,7 +59,7 @@ public interface TorrentByteStorage {
 	 * @throws IOException If an I/O error occurs while reading from the
 	 * byte storage.
 	 */
-	public int read(ByteBuffer buffer, long offset) throws IOException;
+	int read(ByteBuffer buffer, long offset) throws IOException;
 
 	/**
 	 * Write bytes to the byte storage.
@@ -76,7 +76,7 @@ public interface TorrentByteStorage {
 	 * @throws IOException If an I/O error occurs while writing to the byte
 	 * storage.
 	 */
-	public int write(ByteBuffer block, long offset) throws IOException;
+	int write(ByteBuffer block, long offset) throws IOException;
 
 	/**
 	 * Close this byte storage.
@@ -84,7 +84,7 @@ public interface TorrentByteStorage {
 	 * @throws IOException If closing the underlying storage (file(s) ?)
 	 * failed.
 	 */
-	public void close() throws IOException;
+	void close() throws IOException;
 
 	/**
 	 * Finalize the byte storage when the download is complete.
@@ -97,10 +97,10 @@ public interface TorrentByteStorage {
 	 *
 	 * @throws IOException If the finalization failed.
 	 */
-	public void finish() throws IOException;
+	void finish() throws IOException;
 
 	/**
 	 * Tells whether this byte storage has been finalized.
 	 */
-	public boolean isFinished();
+	boolean isFinished();
 }

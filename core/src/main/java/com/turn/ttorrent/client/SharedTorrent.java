@@ -114,7 +114,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(Torrent torrent, File destDir)
-		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+		throws IOException, NoSuchAlgorithmException {
 		this(torrent, destDir, false);
 	}
 
@@ -136,7 +136,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(Torrent torrent, File destDir, boolean seeder)
-		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+		throws IOException, NoSuchAlgorithmException {
 		this(torrent.getEncoded(), destDir, seeder, DEFAULT_REQUEST_STRATEGY);
 	}
 
@@ -160,7 +160,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 */
 	public SharedTorrent(Torrent torrent, File destDir, boolean seeder,
 			RequestStrategy requestStrategy)
-		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+		throws IOException, NoSuchAlgorithmException {
 		this(torrent.getEncoded(), destDir, seeder, requestStrategy);
 	}
 
@@ -175,7 +175,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(byte[] torrent, File destDir)
-		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+		throws IOException, NoSuchAlgorithmException {
 		this(torrent, destDir, false);
 	}
 
@@ -191,7 +191,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(byte[] torrent, File parent, boolean seeder)
-		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+		throws IOException, NoSuchAlgorithmException {
 		this(torrent, parent, seeder, DEFAULT_REQUEST_STRATEGY);
 	}
 
@@ -209,7 +209,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 */
 	public SharedTorrent(byte[] torrent, File parent, boolean seeder,
 			RequestStrategy requestStrategy)
-		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+		throws IOException, NoSuchAlgorithmException {
 		super(torrent, seeder);
 
 		if (parent == null || !parent.isDirectory()) {
@@ -367,6 +367,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 		}
 
 		int threads = getHashingThreadsCount();
+		//TODO use certain files size instead of full torrent size
 		int nPieces = (int) (Math.ceil(
 				(double)this.getSize() / this.pieceLength));
 		int step = 10;
