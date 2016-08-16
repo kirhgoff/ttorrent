@@ -21,3 +21,5 @@ core/doc/*
 *.bak
 *~
 pom.xml.releaseBackup
+*.iml
+.idea/
